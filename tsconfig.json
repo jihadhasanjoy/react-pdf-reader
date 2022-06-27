@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2017",
         "jsx": "react",
         "module": "commonjs",
         "moduleResolution": "node",
@@ -9,7 +9,7 @@
         "skipLibCheck": true,
         "experimentalDecorators": true,
         "lib": [
-            "es5",
+            "es2017",
             "dom",
             "es2015.collection"
         ],
