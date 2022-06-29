@@ -3,7 +3,8 @@ import { pdfImageUrl } from "../config";
 import IPDFList from "../models/PDFList.model";
 import Modal from "./Modal";
 import React = require("react");
-const PDFListItem: React.FC<IPDFList> = ({ name, path }: IPDFList) => {
+
+export default function PDFListItem({ name, path }: IPDFList) {
   const [showModal, setShowModal] = useState<boolean>(false)
   return (
     <>
@@ -17,5 +18,3 @@ const PDFListItem: React.FC<IPDFList> = ({ name, path }: IPDFList) => {
     </>
   )
 }
-
-export default PDFListItem

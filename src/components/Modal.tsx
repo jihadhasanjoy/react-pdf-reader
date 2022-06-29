@@ -12,7 +12,7 @@ interface IModalProps {
   modalClose: any
 }
 
-const Modal = ({ modalShow, url, modalClose }: IModalProps): JSX.Element => {
+export default function Modal({ modalShow, url, modalClose }: IModalProps): JSX.Element {
   const fileUrl2 = `${pdfFilePath}${url}`;
   const searchPluginInstance = searchPlugin();
   const pageNavigationPluginInstance = pageNavigationPlugin();
@@ -100,5 +100,3 @@ const Modal = ({ modalShow, url, modalClose }: IModalProps): JSX.Element => {
   </>
 
 }
-
-export default Modal;

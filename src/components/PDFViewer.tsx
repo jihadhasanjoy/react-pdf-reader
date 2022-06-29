@@ -1,7 +1,7 @@
 import { RenderShowSearchPopoverProps, searchPlugin } from '@react-pdf-viewer/search';
 import React = require('react');
 
-const PDFViewer = () => {
+export default function PDFViewer()  {
   const fileUrl = "./recources/Angular_Router_Crash_Course.pdf";
   const searchPluginInstance = searchPlugin();
   const { ShowSearchPopover } = searchPluginInstance;
@@ -54,5 +54,3 @@ const PDFViewer = () => {
     </div>
   );
 }
-
-export default PDFViewer

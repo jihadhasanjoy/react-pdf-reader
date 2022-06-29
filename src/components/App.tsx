@@ -7,7 +7,7 @@ import IPDFList from '../models/PDFList.model';
 import './../../node_modules/office-ui-fabric-react/dist/css/fabric.min.css';
 import './App.scss';
 import PDFList from './PDFList';
-function App() {
+export default function App() {
   const [apiData, setapiData] = useState<IPDFList[]>([])
   const tsData: IPDFList[] = Data;
   async function fetchMyAPI(): Promise<void> {
@@ -33,9 +33,5 @@ function App() {
         <PDFList lists={apiData} />
       </div>
     </div>
-
-
   );
 }
-
-export default App;

@@ -1,7 +1,7 @@
 
 interface IPDFList {
   name: string;
-  path?: string;
+  path: string;
 }
 
 export default IPDFList

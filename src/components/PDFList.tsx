@@ -6,7 +6,7 @@ interface PDFLists {
   lists: IPDFList[]
 }
 
-const PDFList: React.FC<PDFLists> = ({ lists }: PDFLists) => {
+export default function PDFList({ lists }: PDFLists) {
   return (
     <div className="grid">
       {lists?.map((list, i) => {
@@ -16,5 +16,3 @@ const PDFList: React.FC<PDFLists> = ({ lists }: PDFLists) => {
     </div>
   )
 }
-
-export default PDFList
