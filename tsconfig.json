@@ -5,7 +5,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
-        "declaration": true,
+        "declaration": false,
         "skipLibCheck": true,
         "experimentalDecorators": true,
         "lib": [

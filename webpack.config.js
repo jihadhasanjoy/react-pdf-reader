@@ -23,7 +23,7 @@ module.exports = {
             { test: /\.(ts|tsx)$/, loader: 'awesome-typescript-loader' },
             { test: /\.css$/, use: ['style-loader', 'css-loader'] },
             { test: /\.scss$/, use: ["style-loader", "css-loader", "sass-loader"] },
-            { test: /\.(png|jpg|gif |pdf)$/, use: [{ loader: 'url-loader', options: { limit: 8192 } }] },
+            { test: /\.(png|jpg|gif|pdf)$/, use: [{ loader: 'url-loader', options: { limit: 8192 } }] },
         ],
     },
     mode: "development",
