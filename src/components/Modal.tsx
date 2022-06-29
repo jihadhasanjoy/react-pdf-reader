@@ -14,7 +14,7 @@ interface IModalProps {
 }
 
 const Modal = ({ modalShow, url, modalClose }: IModalProps): JSX.Element => {
-  const siteUrl = window?.location?.href + 'resources/';
+  const siteUrl = 'resources/';
   const fileUrl2 = `${siteUrl}${url}`;
   const searchPluginInstance = searchPlugin();
   const pageNavigationPluginInstance = pageNavigationPlugin();
@@ -58,7 +58,7 @@ const Modal = ({ modalShow, url, modalClose }: IModalProps): JSX.Element => {
       </button>
       <div className="modal-content">
 
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+        <Worker workerUrl={('resources/pdf.worker.min.js')}>
           <div
             className="rpv-core__viewer viewer-wrapper"
 

@@ -10,7 +10,10 @@
         "experimentalDecorators": true,
         "lib": [
             "es2017",
+            "ES2015",
+            "ES2016",
             "dom",
+            "ScriptHost",
             "es2015.collection"
         ],
     }
