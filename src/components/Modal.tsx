@@ -3,9 +3,8 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import { pageNavigationPlugin } from "@react-pdf-viewer/page-navigation";
 import { searchPlugin } from "@react-pdf-viewer/search";
+import { pdfFilePath, workerUrl } from "../config";
 import React = require("react");
-
-
 interface IModalProps {
   onHideModal?: () => void
   url: string,
@@ -14,8 +13,7 @@ interface IModalProps {
 }
 
 const Modal = ({ modalShow, url, modalClose }: IModalProps): JSX.Element => {
-  const siteUrl = 'resources/';
-  const fileUrl2 = `${siteUrl}${url}`;
+  const fileUrl2 = `${pdfFilePath}${url}`;
   const searchPluginInstance = searchPlugin();
   const pageNavigationPluginInstance = pageNavigationPlugin();
   const { ShowSearchPopoverButton } = searchPluginInstance;
@@ -42,7 +40,6 @@ const Modal = ({ modalShow, url, modalClose }: IModalProps): JSX.Element => {
         className="modal-close"
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
           fill="none"
           viewBox="0 0 24 24"
@@ -58,7 +55,7 @@ const Modal = ({ modalShow, url, modalClose }: IModalProps): JSX.Element => {
       </button>
       <div className="modal-content">
 
-        <Worker workerUrl={('resources/pdf.worker.min.js')}>
+        <Worker workerUrl={workerUrl}>
           <div
             className="rpv-core__viewer viewer-wrapper"
 
