@@ -15,7 +15,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({ template: path.join(__dirname, 'src', 'index.html') }),
-        new CopyWebpackPlugin([{ from: './src/favicon.ico', to: 'favicon.ico' }]),
         new CopyWebpackPlugin([{ from: './src/resources', to: 'resources' }])
     ],
     module: {
