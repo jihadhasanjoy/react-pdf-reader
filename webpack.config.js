@@ -2,8 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
-module.exports = {
+module.exports = env => ({
     entry: './src/index.tsx',
     output: {
         filename: 'scripts/bundle.js',
@@ -13,6 +14,9 @@ module.exports = {
         extensions: ['.js', '.json', '.ts', '.tsx'],
     },
     plugins: [
+        new Dotenv({
+            path: `./.env.${env}`
+        }),
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({ template: path.join(__dirname, 'src', 'index.html') }),
         new CopyWebpackPlugin([{ from: './src/resources', to: 'resources' }])
@@ -25,8 +29,19 @@ module.exports = {
             { test: /\.(png|jpg|gif|pdf)$/, use: [{ loader: 'url-loader', options: { limit: 8192 } }] },
         ],
     },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
+    },
     mode: "development",
     devtool: 'source-map',
     devtool: 'cheap-eval-source-map'
-};
+});
 

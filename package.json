@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --open --history-api-fallback",
+    "build": "webpack --env production --mode production",
+    "start": "webpack-dev-server --open --history-api-fallback --env development --mode development",
+    "build-ucb": "webpack --env ucb --mode production",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -27,6 +28,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.11",
+    "dotenv-webpack": "^7.1.1",
     "expose-loader": "^0.7.5",
     "file-loader": "^1.1.11",
     "gh-pages": "^4.0.0",
