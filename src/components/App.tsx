@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { pdfListDataUrl } from '../config';
+import appAPIService from '../api.service';
 
 import { Data } from '../data/PDFListData';
 import IPDFList from '../models/PDFList.model';
@@ -13,19 +13,17 @@ export default function App() {
   const [isApiError, setApiError] = useState<boolean>(false)
   const tsData: IPDFList[] = Data;
   async function fetchMyAPI(): Promise<void> {
-    try {
-      const response = await fetch(pdfListDataUrl);
-      const data = await response.json();
-      setapiData(data)
-    }
-    catch (err) {
-      setapiData(tsData)
-      setApiError(true)
-    }
-
+    const data = await appAPIService.fetchMyLocalAPI();
+    setapiData(data);
+    console.log(data);
+  }
+  async function fetchMyPDF(): Promise<void>{
+   const data = await appAPIService.getData();
+   console.log(data);
   }
   useEffect(() => {
     fetchMyAPI()
+    fetchMyPDF();
   }, [])
 
   return (
