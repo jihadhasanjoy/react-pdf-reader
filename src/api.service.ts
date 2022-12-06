@@ -1,4 +1,4 @@
-import { pdfFilePath, pdfListDataUrl } from "./config";
+import { pdfListDataUrl, ucbFilePath } from "./config";
 import { IPDFData } from "./models/api.model";
 import IPDFList from "./models/PDFList.model";
 const headers ={
@@ -8,7 +8,7 @@ const headers ={
 const appAPIService = {
   getData: async(): Promise<IPDFData[]> =>{
     try{
-      const response = await fetch(pdfFilePath, {
+      const response = await fetch(ucbFilePath, {
         headers
       })
       const data:any = await response.json();
