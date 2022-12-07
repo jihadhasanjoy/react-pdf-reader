@@ -8,7 +8,8 @@ const headers ={
 const appAPIService = {
   getData: async(): Promise<IPDFData[]> =>{
     try{
-      const response = await fetch(ucbFilePath, {
+      const url = ucbFilePath + 'items';
+      const response = await fetch(url, {
         headers
       })
       const data:any = await response.json();
@@ -18,6 +19,21 @@ const appAPIService = {
     catch(error){
       console.error('data form', error);
       return []
+    }
+  },
+  getDataByID: async(id = 1): Promise<IPDFData> =>{
+    try{
+      const url = ucbFilePath + `GetItemById(${id})`;
+      const response = await fetch(url, {
+        headers
+      })
+      const data:any = await response.json();
+      console.log('data form Id', data);
+      return data?.d;
+    }
+    catch(error){
+      console.error('data form', error);
+      return null
     }
   },
   fetchMyLocalAPI: async (): Promise<IPDFList[]> => {

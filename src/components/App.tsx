@@ -23,12 +23,14 @@ export default function App() {
     setCategories((prev) => [...prev, ...categoriesTitles]);
   }
   async function fetchMyPDF(): Promise<void> {
-    const data: IPDFData[] = await appAPIService.getData();
-    console.log(data);
+    const items: IPDFData[] = await appAPIService.getData();
+    console.log('items', items);
+    const item: IPDFData = await appAPIService.getDataByID();
+    console.log('item', item);
   }
   useEffect(() => {
     fetchMyAPI();
-    // fetchMyPDF();
+    fetchMyPDF();
   }, []);
   useEffect(() => {
     console.log(categories);
