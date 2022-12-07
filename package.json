@@ -49,7 +49,6 @@
   },
   "dependencies": {
     "react-router": "5.3.4",
-    "react-router-dom": "5.3.4",
-    "react-tabs": "^6.0.0"
+    "react-router-dom": "5.3.4"
   }
 }

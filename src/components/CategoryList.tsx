@@ -13,8 +13,8 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
   const { push } = useHistory();
 
   useEffect(() => {
-    console.log(categoryName, "catecategoryName");
-  }, []);
+    console.log({categoryName, lists}, "catecategoryName");
+  }, [categoryName]);
 
   return (
     <>

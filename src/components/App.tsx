@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import "react-tabs/style/react-tabs.css";
 import appAPIService from "../api.service";
 import { Data } from "../data/PDFListData";
 import { IPDFData } from "../models/api.model";
