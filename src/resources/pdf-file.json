@@ -1,26 +1,56 @@
 [
   {
-    "name": "Angular Router Crash Course",
-    "path": "Angular_Router_Crash_Course.pdf"
+    "Title": "Angular Router Crash Course",
+    "Process_Name": "process_name Angular Router Crash Course",
+    "Doc_Link": {
+      "Description": "",
+      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+    },
+    "Category": "Test"
   },
   {
-    "name": "Unit 3",
-    "path": "unit3-4.pdf"
+    "Title": "Unit 3",
+    "Process_Name": "process_name Angular Router Crash Course",
+    "Doc_Link": {
+      "Description": "",
+      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+    },
+    "Category": "Test"
   },
   {
-    "name": "Hello PDF",
-    "path": "hello.pdf"
+    "Title": "Hello PDF",
+    "Process_Name": "process_name Angular Router Crash Course",
+    "Doc_Link": {
+      "Description": "",
+      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+    },
+    "Category": "Test2"
   },
   {
-    "name": "pdf sample",
-    "path": "pdf-sample.pdf"
+    "Title": "pdf sample",
+    "Process_Name": "process_name Angular Router Crash Course",
+    "Doc_Link": {
+      "Description": "",
+      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+    },
+    "Category": "Test2"
   },
   {
-    "name": "sample",
-    "path": "sample.pdf"
+    "Title": "sample",
+    "Process_Name": "process_name Angular Router Crash Course",
+    "Doc_Link": {
+      "Description": "",
+      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+    },
+    "Category": "Test"
   },
   {
-    "name": "Unit 4",
-    "path": "unit3-4.pdf"
+    "Title": "Unit 4",
+    "Process_Name": "process_name Angular Router Crash Course",
+    "Doc_Link": {
+      "Description": "",
+      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+    },
+    "Category": "Test2"
   }
 ]

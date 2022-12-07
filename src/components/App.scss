@@ -3,11 +3,11 @@ html {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   color: #392b2b;
 }
 
@@ -22,11 +22,11 @@ body {
 }
 
 .main-title {
-  font-size: 2.3rem;
-  color: #76BA99;
+  font-size: 2rem;
+  color: #76ba99;
   text-align: center;
-  margin: 2rem 0 .5rem;
   font-weight: 500;
+  margin: 1rem 0 1rem 0;
 }
 
 .grid {
@@ -45,7 +45,7 @@ body {
   width: 100%;
   text-align: center;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,12 +62,12 @@ body {
 }
 
 .box h6 {
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
   font-size: 1.2rem;
 }
 
 .box p {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .modal {
@@ -87,7 +87,7 @@ body {
   position: fixed;
   right: 2rem;
   top: 2rem;
-  background-color: #76BA99;
+  background-color: #76ba99;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
@@ -109,24 +109,23 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
 }
-
 
 @keyframes animatetop {
   from {
     top: -300px;
-    opacity: 0
+    opacity: 0;
   }
 
   to {
     top: 0;
-    opacity: 1
+    opacity: 1;
   }
 }
 
 .viewer-wrapper {
-  border: 1px solid #76BA99;
+  border: 1px solid #76ba99;
   height: 100%;
 }
 
@@ -140,4 +139,33 @@ body {
 
 .rpv-core-text-layer {
   pointer-events: none;
+}
+
+.main-layout {
+  padding: 2rem;
+  display: flex;
+
+  .main {
+    width: 100%;
+    padding: 1rem;
+  }
+  .sidebar {
+    max-width: 230px;
+    width: 100%;
+    border-right: 2px solid #76ba99;
+
+    li {
+      list-style-type: none;
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #76ba9946;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
 }
