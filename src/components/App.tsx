@@ -1,13 +1,14 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import appAPIService from "../api.service";
 import { Data } from "../data/PDFListData";
-import { IPDFData } from "../models/api.model";
+
 import IPDFList, { IMainData } from "../models/PDFList.model";
 import "./../../node_modules/office-ui-fabric-react/dist/css/fabric.min.css";
 import "./App.scss";
 import CategoryList from "./CategoryList";
+import SingleData from "./SingleData";
 
 export default function App() {
   const [apiData, setapiData] = useState<IMainData[]>([]);
@@ -33,9 +34,9 @@ export default function App() {
   }
 
   async function fetchMyPDF(): Promise<void> {
-    const items: IPDFData[] = await appAPIService.getData();
+    const items: IMainData[] = await appAPIService.getData();
     console.log("items", items);
-    const item: IPDFData = await appAPIService.getDataByID();
+    const item: IMainData = await appAPIService.getDataByID();
     console.log("item", item);
   }
   useEffect(() => {
@@ -65,16 +66,23 @@ export default function App() {
       <div className="container">
         <h1 className="main-title">PDF Reader with Searching and Navigating</h1>
         <div className="main-layout">
-          <ul className="sidebar">
-            {categories &&
-              categories.map((categorie) => {
-                return (
-                  <li key={categorie} onClick={() => selectCategory(categorie)}>
-                    {categorie}
-                  </li>
-                );
-              })}
-          </ul>
+          <div className="sidebar">
+            <h2>Categories</h2>
+            <ul>
+              {categories &&
+                categories.map((categorie) => {
+                  return (
+                    <li
+                      key={categorie}
+                      onClick={() => selectCategory(categorie)}
+                    >
+                      {categorie}
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
+
           <div className="main">
             <CategoryList
               lists={filteredCategoryList}
@@ -84,7 +92,8 @@ export default function App() {
               {/* <Route exact path="/">
                 <PDFList lists={apiData} />
               </Route> */}
-              {/* <Route path="/categories/:category" component={CategoryList} /> */}
+              {/* <Route exact path="/" component={CategoryList} /> */}
+              <Route path="/categories/:id" component={SingleData} />
             </Switch>
             {isApiError && (
               <h3 style={{ color: "red", textAlign: "center" }}>

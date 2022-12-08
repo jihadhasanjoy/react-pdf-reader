@@ -1,12 +1,12 @@
 import { pdfListDataUrl, ucbFilePath } from "./config";
-import { IPDFData } from "./models/api.model";
+
 import { IMainData } from "./models/PDFList.model";
 const headers = {
   accept: "application/json;odata=verbose",
   "content-Type": "application/json;odata=verbose",
 };
 const appAPIService = {
-  getData: async (): Promise<IPDFData[]> => {
+  getData: async (): Promise<IMainData[]> => {
     try {
       const url = ucbFilePath + "items";
       const response = await fetch(url, {
@@ -20,7 +20,7 @@ const appAPIService = {
       return [];
     }
   },
-  getDataByID: async (id = 1): Promise<IPDFData> => {
+  getDataByID: async (id = 1): Promise<IMainData> => {
     try {
       const url = ucbFilePath + `GetItemById(${id})`;
       const response = await fetch(url, {

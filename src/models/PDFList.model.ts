@@ -15,6 +15,7 @@ export interface IMainData {
   Process_Name: string;
   Doc_Link: IDoc_Link;
   Category: string;
+  ID: number;
 }
 
 export default IPDFList;
