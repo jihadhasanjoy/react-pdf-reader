@@ -46,11 +46,7 @@ export default function SingleData() {
 
   return (
     <>
-      {/* <Link className="back-button" to={`/`}>
-        Go Back
-      </Link> */}
-      {singleData?.Doc_Link.Url}
-      <div className="modal-contentttttt">
+       {singleData && <div className="modal-contentttttt">
         <Worker workerUrl={workerUrl}>
           <div className="rpv-core__viewer viewer-wrapper">
             <div className="top-bar">
@@ -88,7 +84,7 @@ export default function SingleData() {
             </div>
           </div>
         </Worker>
-      </div>
+      </div>}
     </>
   );
 }

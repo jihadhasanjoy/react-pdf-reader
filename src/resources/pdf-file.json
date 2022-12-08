@@ -5,7 +5,7 @@
     "Process_Name": "process_name Angular Router Crash Course",
     "Doc_Link": {
       "Description": "",
-      "Url": "https://www.africau.edu/images/default/sample.pdf"
+      "Url": "http://localhost:8080/resources/Angular_Router_Crash_Course.pdf"
     },
     "Category": "Test"
   },
@@ -15,7 +15,7 @@
     "Process_Name": "process_name Angular Router Crash Course",
     "Doc_Link": {
       "Description": "",
-      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+      "Url": "http://localhost:8080/resources/hello.pdf"
     },
     "Category": "Test"
   },
@@ -25,7 +25,7 @@
     "Process_Name": "process_name Angular Router Crash Course",
     "Doc_Link": {
       "Description": "",
-      "Url": "https://www.africau.edu/images/default/sample.pdf"
+      "Url": "http://localhost:8080/resources/sample.pdf"
     },
     "Category": "Test2"
   },
@@ -35,7 +35,7 @@
     "Process_Name": "process_name Angular Router Crash Course",
     "Doc_Link": {
       "Description": "",
-      "Url": "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+      "Url": "http://localhost:8080/resources/Angular_Router_Crash_Course.pdf"
     },
     "Category": "Test2"
   },
@@ -45,7 +45,7 @@
     "Process_Name": "process_name Angular Router Crash Course",
     "Doc_Link": {
       "Description": "",
-      "Url": "https://www.africau.edu/images/default/sample.pdf"
+      "Url": "http://localhost:8080/resources/sample.pdf"
     },
     "Category": "Test"
   },
@@ -55,7 +55,7 @@
     "Process_Name": "process_name Angular Router Crash Course",
     "Doc_Link": {
       "Description": "",
-      "Url": "https://www.africau.edu/images/default/sample.pdf"
+      "Url": "http://localhost:8080/resources/unit3-4.pdf"
     },
     "Category": "Test2"
   },
@@ -65,7 +65,7 @@
     "Process_Name": "process_name Angular Router Crash Course",
     "Doc_Link": {
       "Description": "",
-      "Url": "https://www.africau.edu/images/default/sample.pdf"
+      "Url": "http://localhost:8080/resources/hello.pdf"
     },
     "Category": "another"
   }
