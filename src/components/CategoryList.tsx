@@ -35,7 +35,7 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
               <div key={category.ID} className="d">
                 <p>
                   <Link
-                    to={`/categories/${category.ID}`}
+                    to={`/${category.ID}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
