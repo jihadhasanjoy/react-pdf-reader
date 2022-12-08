@@ -40,51 +40,64 @@ export default function SingleData() {
     setSingleData(findedData);
   }
 
+  async function getProductionData(): Promise<void> {
+    const slicedID = Number(IDFromRouter.slice(1));
+    const data: IMainData = await appAPIService.getDataByID(slicedID);
+
+    setSingleData(data);
+  }
+
+  // useEffect(() => {
+  //   getAllLocalData();
+  // }, []);
+
   useEffect(() => {
-    getAllLocalData();
+    getProductionData();
   }, []);
 
   return (
     <>
-       {singleData && <div className="modal-contentttttt">
-        <Worker workerUrl={workerUrl}>
-          <div className="rpv-core__viewer viewer-wrapper">
-            <div className="top-bar">
-              <div style={{ padding: "0px 2px" }}>
-                <ShowSearchPopoverButton />
+      {singleData && (
+        <div className="modal-contentttttt">
+          <Worker workerUrl={workerUrl}>
+            <div className="rpv-core__viewer viewer-wrapper">
+              <div className="top-bar">
+                <div style={{ padding: "0px 2px" }}>
+                  <ShowSearchPopoverButton />
+                </div>
+                <div style={{ padding: "0px 2px" }}>
+                  <GoToFirstPageButton />
+                </div>
+                <div style={{ padding: "0px 2px" }}>
+                  <GoToPreviousPage />
+                </div>
+                <div style={{ padding: "0px 2px" }}>
+                  <CurrentPageInput />
+                </div>
+                <div style={{ padding: "0px 2px" }}>
+                  <GoToNextPageButton />
+                </div>
+                <div style={{ padding: "0px 2px" }}>
+                  <GoToLastPageButton />
+                </div>
               </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToFirstPageButton />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToPreviousPage />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <CurrentPageInput />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToNextPageButton />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToLastPageButton />
-              </div>
-            </div>
 
-            <div style={{ height: "720px" }}>
-              <Viewer
-                // fileUrl={
-                //   "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
-                // }
-                fileUrl={singleData?.Doc_Link.Url}
-                initialPage={initialPage}
-                onPageChange={handlePageChange}
-                plugins={[searchPluginInstance, pageNavigationPluginInstance]}
-                defaultScale={1.5}
-              />
+              <div style={{ height: "720px" }}>
+                <Viewer
+                  // fileUrl={
+                  //   "https://github.com/jihadhasanjoy/test-site-publish/blob/master/resources/Angular_Router_Crash_Course.pdf"
+                  // }
+                  fileUrl={singleData?.Doc_Link.Url}
+                  initialPage={initialPage}
+                  onPageChange={handlePageChange}
+                  plugins={[searchPluginInstance, pageNavigationPluginInstance]}
+                  defaultScale={1.5}
+                />
+              </div>
             </div>
-          </div>
-        </Worker>
-      </div>}
+          </Worker>
+        </div>
+      )}
     </>
   );
 }
