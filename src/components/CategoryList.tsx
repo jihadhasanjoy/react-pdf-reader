@@ -9,31 +9,27 @@ interface ICategoryList {
 }
 
 export default function CategoryList({ lists, categoryName }: ICategoryList) {
-  useEffect(() => {
-    console.log({ categoryName, lists }, "catecategoryName");
-  }, [categoryName]);
+  useEffect(() => {}, [categoryName]);
 
   const openNewTab = (id: number) => {
     console.log("open new tab");
-    // window.open(
-    //   `http://localhost:8080/categories/${id}`,
-    //   "_blank",
-    //   "noopener,noreferrer"
-    // );
   };
   return (
     <>
       <div className="category-list">
-        {lists.length < 1 && (
+        {lists.length < 1 ? (
           <div className="select-category">
             <p>Please select category</p>
           </div>
+        ) : (
+          <p className="selected-items-title">Items of selected category</p>
         )}
-        {lists &&
-          lists.map((category) => {
-            return (
-              <div key={category.ID} className="d">
-                <p>
+
+        <ul className="category-list">
+          {lists &&
+            lists.map((category) => {
+              return (
+                <li key={category.ID} className="d">
                   <Link
                     to={`/${category.ID}`}
                     target="_blank"
@@ -41,10 +37,10 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
                   >
                     {category.Title}
                   </Link>
-                </p>
-              </div>
-            );
-          })}
+                </li>
+              );
+            })}
+        </ul>
       </div>
     </>
   );

@@ -1,9 +1,8 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import appAPIService from "../api.service";
-import { Data } from "../data/PDFListData";
 
-import IPDFList, { IMainData } from "../models/PDFList.model";
+import { IMainData } from "../models/PDFList.model";
 import "./../../node_modules/office-ui-fabric-react/dist/css/fabric.min.css";
 import "./App.scss";
 import CategoryList from "./CategoryList";
@@ -12,14 +11,13 @@ export default function AppLayout() {
   const [apiData, setapiData] = useState<IMainData[]>([]);
   const [isApiError, setApiError] = useState<boolean>(false);
   const [categories, setCategories] = useState<string[]>([]);
+  const [activeStyle, setActiveStyle] = useState(null);
   const [filteredCategoryList, setFilteredCategoryList] = useState<IMainData[]>(
     []
   );
   const [categoryName, setCategoryName] = useState<string>(null);
 
-  const tsData: IPDFList[] = Data;
-
-  async function fetchMyAPI(): Promise<void> {
+  async function getAllLocalData(): Promise<void> {
     const data = await appAPIService.fetchMyLocalAPI();
     setapiData(data);
     let categoriesTitles = data.map((d) => d.Category);
@@ -38,12 +36,10 @@ export default function AppLayout() {
     console.log("item", item);
   }
   useEffect(() => {
-    fetchMyAPI();
+    getAllLocalData();
     // fetchMyPDF();
   }, []);
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
+  useEffect(() => {}, [categories]);
 
   const selectCategory = (category: string) => {
     let filteredData = apiData.filter((val, index, data) => {
@@ -52,16 +48,15 @@ export default function AppLayout() {
       }
     });
 
+    setActiveStyle(category);
+
     setFilteredCategoryList(filteredData);
     setCategoryName(category);
-
-    console.log(filteredData, "filteredData");
-    console.log(category, "category");
   };
 
   return (
     <div className="container">
-      <h1 className="main-title">PDF Reader with Searching and Navigating</h1>
+      <h1 className="main-title">UCBL Data Reader</h1>
       <div className="main-layout">
         <div className="sidebar">
           <h2>Categories</h2>
@@ -72,6 +67,7 @@ export default function AppLayout() {
                   <li
                     key={categorie}
                     onClick={() => selectCategory(categorie)}
+                    className={`${activeStyle === categorie ? "active" : ""}`}
                   >
                     {categorie}
                   </li>
