@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { IMainData } from "../models/PDFList.model";
 import React = require("react");
 
@@ -11,7 +10,8 @@ interface ICategoryList {
 export default function CategoryList({ lists, categoryName }: ICategoryList) {
   useEffect(() => {}, [categoryName]);
 
-  const openNewTab = (id: number) => {
+  const openNewTab = (url: string) => {
+    window.open(url, "_blank");
     console.log("open new tab");
   };
   return (
@@ -29,14 +29,12 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
           {lists &&
             lists.map((category) => {
               return (
-                <li key={category.ID} className="d">
-                  <Link
-                    to={`/${category.ID}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {category.Title}
-                  </Link>
+                <li
+                  key={category.ID}
+                  className="d"
+                  onClick={() => openNewTab(category.Doc_Link.Url)}
+                >
+                  {category.Title}
                 </li>
               );
             })}
