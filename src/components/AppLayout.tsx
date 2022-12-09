@@ -29,15 +29,16 @@ export default function AppLayout() {
     return self.indexOf(value) === index;
   }
 
-  async function fetchMyPDF(): Promise<void> {
+  async function getProductionData(): Promise<void> {
     const items: IMainData[] = await appAPIService.getData();
-    console.log("items", items);
-    const item: IMainData = await appAPIService.getDataByID();
-    console.log("item", item);
+    setapiData(items);
+    let categoriesTitles = items.map((d) => d.Category);
+    categoriesTitles = categoriesTitles.filter(onlyUnique);
+    setCategories((prev) => [...prev, ...categoriesTitles]);
   }
   useEffect(() => {
-    getAllLocalData();
-    // fetchMyPDF();
+    // getAllLocalData();
+    getProductionData();
   }, []);
   useEffect(() => {}, [categories]);
 
