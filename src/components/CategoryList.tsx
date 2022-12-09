@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { IMainData } from "../models/PDFList.model";
+import PDFListItem from "./PDFListItem";
 import React = require("react");
 
 interface ICategoryList {
@@ -11,7 +12,7 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
   useEffect(() => {}, [categoryName]);
 
   const openNewTab = (url: string) => {
-    window.open(url, "_blank");
+    window.open("", "_blank");
     console.log("open new tab");
   };
   return (
@@ -22,19 +23,22 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
             <p>Please select category</p>
           </div>
         ) : (
-          <p className="selected-items-title">Items of selected category</p>
+          <p className="selected-items-title">Data of selected category</p>
         )}
 
         <ul className="category-list">
           {lists &&
             lists.map((category) => {
               return (
-                <li
-                  key={category.ID}
-                  className="d"
-                  onClick={() => openNewTab(category.Doc_Link.Url)}
-                >
-                  {category.Title}
+                <li key={category.ID} className="d">
+                  {/* <Link
+                    to={`/${category.Doc_Link.Url}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {category.Title}
+                  </Link> */}
+                  <PDFListItem data={category} />
                 </li>
               );
             })}

@@ -1,9 +1,8 @@
 import React = require("react");
-import IPDFList from "../models/PDFList.model";
-import PDFListItem from "./PDFListItem";
+import { IMainData } from "../models/PDFList.model";
 
 interface PDFLists {
-  lists: IPDFList[];
+  lists: IMainData[];
 }
 
 export default function PDFList({ lists }: PDFLists) {
@@ -11,13 +10,15 @@ export default function PDFList({ lists }: PDFLists) {
     <div className="grid">
       {lists?.map((list, i) => {
         return (
-          <PDFListItem
-            key={i}
-            Title={list.Title}
-            Process_Name={list.Process_Name}
-            Doc_Link={list.Doc_Link}
-            Category={list.Category}
-          />
+          // <PDFListItem
+          //   key={i}
+          //   Title={list.Title}
+          //   Process_Name={list.Process_Name}
+          //   Doc_Link={list.Doc_Link}
+          //   Category={list.Category}
+          //   ID={list.ID}
+          // />
+          <p>Nothing</p>
         );
       })}
     </div>

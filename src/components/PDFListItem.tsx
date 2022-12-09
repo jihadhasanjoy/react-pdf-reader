@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { pdfImageUrl } from "../config";
-import IPDFList from "../models/PDFList.model";
+import { IMainData } from "../models/PDFList.model";
 import Modal from "./Modal";
 import React = require("react");
 
-export default function PDFListItem({ Doc_Link }: IPDFList) {
+interface IProps {
+  data: IMainData;
+}
+
+export default function PDFListItem({ data }: IProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <>
@@ -13,16 +16,16 @@ export default function PDFListItem({ Doc_Link }: IPDFList) {
         className="box"
         title="Click to details"
       >
-        <img src={pdfImageUrl} alt="pdf" className="w-12 mx-auto block mb-3" />
+        {/* <img src={pdfImageUrl} alt="pdf" className="w-12 mx-auto block mb-3" /> */}
         <div className="f">
-          <h6 className="text-xl mb-1"> {name} </h6>
+          <h6 className="text-xl mb-1"> {data.Title} </h6>
         </div>
       </div>
       {showModal ? (
         <Modal
           modalShow={showModal}
           modalClose={() => setShowModal(false)}
-          url={Doc_Link.Url}
+          url={data.Doc_Link.Url}
         />
       ) : null}
     </>

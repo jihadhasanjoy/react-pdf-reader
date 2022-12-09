@@ -1,3 +1,3 @@
-import IPDFList from "../models/PDFList.model";
+import { IMainData } from "../models/PDFList.model";
 
-export const Data: IPDFList[] = [];
+export const Data: IMainData[] = [];

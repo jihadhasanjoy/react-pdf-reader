@@ -6,13 +6,17 @@ import { searchPlugin } from "@react-pdf-viewer/search";
 import { pdfFilePath, workerUrl } from "../config";
 import React = require("react");
 interface IModalProps {
-  onHideModal?: () => void
-  url: string,
-  modalShow: boolean
-  modalClose: any
+  onHideModal?: () => void;
+  url: string;
+  modalShow: boolean;
+  modalClose: any;
 }
 
-export default function Modal({ modalShow, url, modalClose }: IModalProps): JSX.Element {
+export default function Modal({
+  modalShow,
+  url,
+  modalClose,
+}: IModalProps): JSX.Element {
   const fileUrl2 = `${pdfFilePath}${url}`;
   const searchPluginInstance = searchPlugin();
   const pageNavigationPluginInstance = pageNavigationPlugin();
@@ -26,77 +30,72 @@ export default function Modal({ modalShow, url, modalClose }: IModalProps): JSX.
     GoToFirstPageButton,
     GoToLastPageButton,
     GoToNextPageButton,
-    GoToPreviousPage
+    GoToPreviousPage,
   } = pageNavigationPluginInstance;
   const currentPage = localStorage.getItem("current-page");
   const initialPage = currentPage ? parseInt(currentPage, 10) : 0;
 
-  return <> {
-
-    <div
-      className="modal">
-      <button
-        onClick={modalClose}
-        className="modal-close"
-      >
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      <div className="modal-content">
-
-        <Worker workerUrl={workerUrl}>
-          <div
-            className="rpv-core__viewer viewer-wrapper"
-
-          >
-            <div className="top-bar"
+  return (
+    <>
+      {" "}
+      {
+        <div className="modal">
+          <button onClick={modalClose} className="modal-close">
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <div style={{ padding: "0px 2px" }}>
-                <ShowSearchPopoverButton />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToFirstPageButton />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToPreviousPage />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <CurrentPageInput />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToNextPageButton />
-              </div>
-              <div style={{ padding: "0px 2px" }}>
-                <GoToLastPageButton />
-              </div>
-
-            </div>
-
-            <div style={{ height: "720px" }}>
-              <Viewer
-                fileUrl={fileUrl2}
-                initialPage={initialPage}
-                onPageChange={handlePageChange}
-                plugins={[searchPluginInstance, pageNavigationPluginInstance]}
-                defaultScale={1.5}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
               />
-            </div>
-          </div>
-        </Worker>
-      </div>
-    </div>
-  }
-  </>
+            </svg>
+          </button>
+          <div className="modal-content">
+            <Worker workerUrl={workerUrl}>
+              <div className="rpv-core__viewer viewer-wrapper">
+                <div className="top-bar">
+                  <div style={{ padding: "0px 2px" }}>
+                    <ShowSearchPopoverButton />
+                  </div>
+                  <div style={{ padding: "0px 2px" }}>
+                    <GoToFirstPageButton />
+                  </div>
+                  <div style={{ padding: "0px 2px" }}>
+                    <GoToPreviousPage />
+                  </div>
+                  <div style={{ padding: "0px 2px" }}>
+                    <CurrentPageInput />
+                  </div>
+                  <div style={{ padding: "0px 2px" }}>
+                    <GoToNextPageButton />
+                  </div>
+                  <div style={{ padding: "0px 2px" }}>
+                    <GoToLastPageButton />
+                  </div>
+                </div>
 
+                <div style={{ height: "720px" }}>
+                  <Viewer
+                    fileUrl={url}
+                    initialPage={initialPage}
+                    onPageChange={handlePageChange}
+                    plugins={[
+                      searchPluginInstance,
+                      pageNavigationPluginInstance,
+                    ]}
+                    defaultScale={1.5}
+                  />
+                </div>
+              </div>
+            </Worker>
+          </div>
+        </div>
+      }
+    </>
+  );
 }
