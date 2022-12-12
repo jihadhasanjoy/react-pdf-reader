@@ -3,7 +3,7 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import { pageNavigationPlugin } from "@react-pdf-viewer/page-navigation";
 import { searchPlugin } from "@react-pdf-viewer/search";
-import { pdfFilePath, workerUrl } from "../config";
+import { workerUrl } from "../config";
 import React = require("react");
 interface IModalProps {
   onHideModal?: () => void;
@@ -17,7 +17,6 @@ export default function Modal({
   url,
   modalClose,
 }: IModalProps): JSX.Element {
-  const fileUrl2 = `${pdfFilePath}${url}`;
   const searchPluginInstance = searchPlugin();
   const pageNavigationPluginInstance = pageNavigationPlugin();
   const { ShowSearchPopoverButton } = searchPluginInstance;
@@ -37,7 +36,6 @@ export default function Modal({
 
   return (
     <>
-      {" "}
       {
         <div className="modal">
           <button onClick={modalClose} className="modal-close">

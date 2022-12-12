@@ -47,11 +47,8 @@ export default function SingleData() {
     setSingleData(data);
   }
 
-  // useEffect(() => {
-  //   getAllLocalData();
-  // }, []);
-
   useEffect(() => {
+    // getAllLocalData();
     getProductionData();
   }, []);
 

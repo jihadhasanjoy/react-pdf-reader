@@ -22,7 +22,7 @@ body {
 
 .main-title {
   font-size: 2rem;
-  color: #76ba99;
+  // color: #76ba99;
   text-align: center;
   font-weight: 500;
   padding: 15px 0;
@@ -202,6 +202,7 @@ body {
   color: #fff;
   padding: 3px;
   border: 0;
+  min-width: auto !important;
 }
 
 .modal-content {

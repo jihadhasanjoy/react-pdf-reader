@@ -9,6 +9,7 @@ interface IProps {
 
 export default function PDFListItem({ data }: IProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
+
   return (
     <>
       <div
@@ -16,9 +17,8 @@ export default function PDFListItem({ data }: IProps) {
         className="box"
         title="Click to details"
       >
-        {/* <img src={pdfImageUrl} alt="pdf" className="w-12 mx-auto block mb-3" /> */}
-        <div className="f">
-          <h6 className="text-xl mb-1"> {data.Title} </h6>
+        <div>
+          <h6> {data.Title.slice(0, 130)}... </h6>
         </div>
       </div>
       {showModal ? (
