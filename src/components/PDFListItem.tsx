@@ -25,7 +25,7 @@ export default function PDFListItem({ data }: IProps) {
         <Modal
           modalShow={showModal}
           modalClose={() => setShowModal(false)}
-          url={data.Doc_Link.Url}
+          url={data.Pdf_Link || data?.Doc_Link?.Url}
         />
       ) : null}
     </>

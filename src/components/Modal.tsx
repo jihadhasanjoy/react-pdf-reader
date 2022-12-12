@@ -24,6 +24,9 @@ export default function Modal({
     localStorage.setItem("current-page", `${e.currentPage}`);
   };
 
+  console.log('url', url);
+  console.log(' worker url', workerUrl);
+
   const {
     CurrentPageInput,
     GoToFirstPageButton,
