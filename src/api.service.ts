@@ -1,4 +1,5 @@
 import { pdfListDataUrl, ucbFilePath } from "./config";
+import { PDFListLocatData } from "./data/PDFListData";
 
 import { IMainData } from "./models/PDFList.model";
 const headers = {
@@ -41,7 +42,7 @@ const appAPIService = {
       const data = await response.json();
       return data;
     } catch (err) {
-      return [];
+      return PDFListLocatData;
     }
   },
 };

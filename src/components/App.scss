@@ -78,7 +78,8 @@ body {
     max-width: 250px;
     height: calc(100vh - 67px);
     width: 100%;
-    border-right: 1px solid #76ba99;
+    // border-right: 1px solid #76ba99;
+    box-shadow: 0px 4px 7px -2px #76ba99;
 
     li,
     h2 {
