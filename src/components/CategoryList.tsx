@@ -26,7 +26,7 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
           <p className="selected-items-title">Data of selected category</p>
         )}
 
-        <ul className="category-list">
+        <ul id="categories" className="category-list">
           {lists &&
             lists.map((category) => {
               return (

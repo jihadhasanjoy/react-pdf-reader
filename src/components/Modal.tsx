@@ -1,9 +1,6 @@
-import { Viewer, Worker } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import { pageNavigationPlugin } from "@react-pdf-viewer/page-navigation";
-import { searchPlugin } from "@react-pdf-viewer/search";
-import { workerUrl } from "../config";
+import PDFViewer from "./PDFViewer";
 import React = require("react");
 interface IModalProps {
   onHideModal?: () => void;
@@ -17,30 +14,26 @@ export default function Modal({
   url,
   modalClose,
 }: IModalProps): JSX.Element {
-  const searchPluginInstance = searchPlugin();
-  const pageNavigationPluginInstance = pageNavigationPlugin();
-  const { ShowSearchPopoverButton } = searchPluginInstance;
-  const handlePageChange = (e: any) => {
-    localStorage.setItem("current-page", `${e.currentPage}`);
-  };
+  const modal = document.getElementById("categories");
+  const buttons: any = modal?.getElementsByTagName("button");
 
-  console.log('url', url);
-  console.log(' worker url', workerUrl);
+  console.log(buttons, "call from prevent default");
 
-  const {
-    CurrentPageInput,
-    GoToFirstPageButton,
-    GoToLastPageButton,
-    GoToNextPageButton,
-    GoToPreviousPage,
-  } = pageNavigationPluginInstance;
-  const currentPage = localStorage.getItem("current-page");
-  const initialPage = currentPage ? parseInt(currentPage, 10) : 0;
+  if (buttons) {
+    let arr = Array.from(buttons);
+    console.log(arr, "buttons have");
+    arr?.map((d: HTMLButtonElement) => {
+      d.addEventListener("click", (e) => {
+        console.log("prevent default");
+        e.preventDefault();
+      });
+    });
+  }
 
   return (
     <>
       {
-        <div className="modal">
+        <div id="modal" className="modal">
           <button onClick={modalClose} className="modal-close">
             <svg
               className="h-6 w-6"
@@ -57,43 +50,7 @@ export default function Modal({
             </svg>
           </button>
           <div className="modal-content">
-            <Worker workerUrl={workerUrl}>
-              <div className="rpv-core__viewer viewer-wrapper">
-                <div className="top-bar">
-                  <div style={{ padding: "0px 2px" }}>
-                    <ShowSearchPopoverButton />
-                  </div>
-                  <div style={{ padding: "0px 2px" }}>
-                    <GoToFirstPageButton />
-                  </div>
-                  <div style={{ padding: "0px 2px" }}>
-                    <GoToPreviousPage />
-                  </div>
-                  <div style={{ padding: "0px 2px" }}>
-                    <CurrentPageInput />
-                  </div>
-                  <div style={{ padding: "0px 2px" }}>
-                    <GoToNextPageButton />
-                  </div>
-                  <div style={{ padding: "0px 2px" }}>
-                    <GoToLastPageButton />
-                  </div>
-                </div>
-
-                <div style={{ height: "720px" }}>
-                  <Viewer
-                    fileUrl={url}
-                    initialPage={initialPage}
-                    onPageChange={handlePageChange}
-                    plugins={[
-                      searchPluginInstance,
-                      pageNavigationPluginInstance,
-                    ]}
-                    defaultScale={1.5}
-                  />
-                </div>
-              </div>
-            </Worker>
+            <PDFViewer url={url} />
           </div>
         </div>
       }

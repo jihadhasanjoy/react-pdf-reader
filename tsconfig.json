@@ -1,21 +1,21 @@
 {
-    "compilerOptions": {
-        "target": "ES5",
-        "jsx": "react",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "declaration": false,
-        "skipLibCheck": true,
-        "experimentalDecorators": true,
-        "lib": [
-            "es2017",
-            "ES5",
-            "ES2015",
-            "ES2016",
-            "dom",
-            "ScriptHost",
-            "es2015.collection"
-        ],
-    }
+  "compilerOptions": {
+    "target": "ES6",
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": false,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "es2017",
+      "ES5",
+      "ES2015",
+      "ES2016",
+      "dom",
+      "ScriptHost",
+      "es2015.collection"
+    ]
+  }
 }

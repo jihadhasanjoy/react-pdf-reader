@@ -1,56 +1,71 @@
-import { RenderShowSearchPopoverProps, searchPlugin } from '@react-pdf-viewer/search';
-import React = require('react');
+import { Viewer, Worker } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import { pageNavigationPlugin } from "@react-pdf-viewer/page-navigation";
+import { searchPlugin } from "@react-pdf-viewer/search";
+import { workerUrl } from "../config";
+import React = require("react");
 
-export default function PDFViewer()  {
-  const fileUrl = "./recources/Angular_Router_Crash_Course.pdf";
+interface IPDFViewrProps {
+  url: string;
+}
+
+export default function PDFViewer({ url }: IPDFViewrProps): JSX.Element {
   const searchPluginInstance = searchPlugin();
-  const { ShowSearchPopover } = searchPluginInstance;
+  const pageNavigationPluginInstance = pageNavigationPlugin();
+  const { ShowSearchPopoverButton } = searchPluginInstance;
+  const handlePageChange = (e: any) => {
+    localStorage.setItem("current-page", `${e.currentPage}`);
+  };
+
+  const {
+    CurrentPageInput,
+    GoToFirstPageButton,
+    GoToLastPageButton,
+    GoToNextPageButton,
+    GoToPreviousPage,
+  } = pageNavigationPluginInstance;
+  const currentPage = localStorage.getItem("current-page");
+  const initialPage = currentPage ? parseInt(currentPage, 10) : 0;
 
   return (
-    <div
-      className="rpv-core__viewer"
-      style={{
-        border: '1px solid rgba(0, 0, 0, 0.3)',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-      }}
-    >
-      <div
-        style={{
-          alignItems: 'center',
-          backgroundColor: '#eeeeee',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
-          display: 'flex',
-          padding: '4px',
-        }}
-      >
-        <ShowSearchPopover>
-          {(props: RenderShowSearchPopoverProps) => (
-            <button
-              style={{
-                backgroundColor: '#357edd',
-                border: 'none',
-                borderRadius: '4px',
-                color: '#ffffff',
-                cursor: 'pointer',
-                padding: '8px',
-              }}
-              onClick={props.onClick}
-            >
-              Search
-            </button>
-          )}
-        </ShowSearchPopover>
-      </div>
-      <div
-        style={{
-          flex: 1,
-          overflow: 'hidden',
-        }}
-      >
-        {/* <Viewer fileUrl={fileUrl} plugins={[searchPluginInstance]} /> */}
-      </div>
-    </div>
+    <>
+      {
+        <Worker workerUrl={workerUrl}>
+          <div className="rpv-core__viewer viewer-wrapper">
+            <div className="top-bar">
+              <div style={{ padding: "0px 2px" }}>
+                <ShowSearchPopoverButton />
+              </div>
+              <div style={{ padding: "0px 2px" }}>
+                <GoToFirstPageButton />
+              </div>
+              <div style={{ padding: "0px 2px" }}>
+                <GoToPreviousPage />
+              </div>
+              <div style={{ padding: "0px 2px" }}>
+                <CurrentPageInput />
+              </div>
+              <div style={{ padding: "0px 2px" }}>
+                <GoToNextPageButton />
+              </div>
+              <div style={{ padding: "0px 2px" }}>
+                <GoToLastPageButton />
+              </div>
+            </div>
+
+            <div style={{ height: "720px" }}>
+              <Viewer
+                fileUrl={url}
+                initialPage={initialPage}
+                onPageChange={handlePageChange}
+                plugins={[searchPluginInstance, pageNavigationPluginInstance]}
+                defaultScale={1.5}
+              />
+            </div>
+          </div>
+        </Worker>
+      }
+    </>
   );
 }

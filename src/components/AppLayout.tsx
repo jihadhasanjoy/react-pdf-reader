@@ -38,7 +38,7 @@ export default function AppLayout() {
   }
   useEffect(() => {
     getAllLocalData();
-    //  getProductionData();
+    // getProductionData();
   }, []);
   useEffect(() => {}, [categories]);
 

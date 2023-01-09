@@ -10,6 +10,8 @@ interface IProps {
 export default function PDFListItem({ data }: IProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  const PDFURL = data.Pdf_Link || data?.Doc_Link?.Url;
+
   return (
     <>
       <div
@@ -28,6 +30,7 @@ export default function PDFListItem({ data }: IProps) {
           url={data.Pdf_Link || data?.Doc_Link?.Url}
         />
       ) : null}
+      {/* <PDFViewer url={PDFURL} /> */}
     </>
   );
 }
