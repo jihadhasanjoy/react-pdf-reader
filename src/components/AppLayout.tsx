@@ -21,7 +21,9 @@ export default function AppLayout() {
     const data = await appAPIService.fetchMyLocalAPI();
     setapiData(data);
     let categoriesTitles = data.map((d) => d.Category);
+    console.log(categoriesTitles, "c");
     categoriesTitles = categoriesTitles.filter(onlyUnique);
+    categoriesTitles = categoriesTitles.filter(Boolean);
     setCategories((prev) => [...prev, ...categoriesTitles]);
   }
 
@@ -34,11 +36,12 @@ export default function AppLayout() {
     setapiData(items);
     let categoriesTitles = items.map((d) => d.Category);
     categoriesTitles = categoriesTitles.filter(onlyUnique);
+    categoriesTitles = categoriesTitles.filter(Boolean);
     setCategories((prev) => [...prev, ...categoriesTitles]);
   }
   useEffect(() => {
-    getAllLocalData();
-    // getProductionData();
+    // getAllLocalData();
+    getProductionData();
   }, []);
   useEffect(() => {}, [categories]);
 

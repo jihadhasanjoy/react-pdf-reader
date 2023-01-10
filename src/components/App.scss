@@ -249,3 +249,18 @@ body {
 .rpv-core-text-layer {
   pointer-events: none;
 }
+
+.modal {
+  .rpv-core-button {
+    min-width: unset;
+  }
+  .rpv-current-page-input {
+    pointer-events: none !important;
+    border: 0;
+    background: #f2e6e6;
+    text-align: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+  }
+}

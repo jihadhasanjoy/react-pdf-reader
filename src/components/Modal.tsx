@@ -17,23 +17,27 @@ export default function Modal({
   const modal = document.getElementById("categories");
   const buttons: any = modal?.getElementsByTagName("button");
 
-  console.log(buttons, "call from prevent default");
-
-  if (buttons) {
-    let arr = Array.from(buttons);
-    console.log(arr, "buttons have");
-    arr?.map((d: HTMLButtonElement) => {
-      d.addEventListener("click", (e) => {
-        console.log("prevent default");
-        e.preventDefault();
-      });
+  function addAttribute() {
+    const searchInput = document.querySelector(".rpv-search-popover-input");
+    searchInput?.setAttribute("placeholder", "Search...");
+    searchInput?.addEventListener("keypress", function (event: any) {
+      if (event.key === "Enter") {
+        // alert(event.key + " " + event.which);
+        event.preventDefault();
+      }
     });
+    console.log(searchInput, "searchInput");
+    if (buttons) {
+      for (let index = 0; index < buttons.length; index++) {
+        buttons[index].setAttribute("type", "button");
+      }
+    }
   }
 
   return (
     <>
       {
-        <div id="modal" className="modal">
+        <div id="modal" onClick={() => addAttribute()} className="modal">
           <button onClick={modalClose} className="modal-close">
             <svg
               className="h-6 w-6"
