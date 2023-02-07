@@ -15,16 +15,19 @@ export default function AppLayout() {
   const [filteredCategoryList, setFilteredCategoryList] = useState<IMainData[]>(
     []
   );
-  const [categoryName, setCategoryName] = useState<string>(null);
+  const [categoryName, setCategoryName] = useState<string>("");
 
   async function getAllLocalData(): Promise<void> {
     const data = await appAPIService.fetchMyLocalAPI();
     setapiData(data);
-    let categoriesTitles = data.map((d) => d.Category);
-    console.log(categoriesTitles, "c");
+    mapCatgoryTitleList(data);
+  }
+
+  function mapCatgoryTitleList(data: IMainData[]): void {
+    let categoriesTitles = data?.map((d) => d.Category);
     categoriesTitles = categoriesTitles.filter(onlyUnique);
     categoriesTitles = categoriesTitles.filter(Boolean);
-    setCategories((prev) => [...prev, ...categoriesTitles]);
+    setCategories(categoriesTitles);
   }
 
   function onlyUnique(value, index, self) {
@@ -32,16 +35,14 @@ export default function AppLayout() {
   }
 
   async function getProductionData(): Promise<void> {
-    const items: IMainData[] = await appAPIService.getData();
-    setapiData(items);
-    let categoriesTitles = items.map((d) => d.Category);
-    categoriesTitles = categoriesTitles.filter(onlyUnique);
-    categoriesTitles = categoriesTitles.filter(Boolean);
-    setCategories((prev) => [...prev, ...categoriesTitles]);
+    const data = await appAPIService.getData();
+    setapiData(data);
+    mapCatgoryTitleList(data);
   }
+
   useEffect(() => {
-    // getAllLocalData();
-    getProductionData();
+    getAllLocalData();
+    // getProductionData();
   }, []);
   useEffect(() => {}, [categories]);
 
@@ -58,12 +59,46 @@ export default function AppLayout() {
     setCategoryName(category);
   };
 
+  const filterCategoryTitle = (e) => {
+    const keyword = e.target.value;
+    let allCategiries = [...categories];
+
+    if (keyword) {
+      const results = allCategiries.filter((catTitle) => {
+        return catTitle?.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
+      });
+      setCategories(results);
+    } else {
+      mapCatgoryTitleList(apiData);
+    }
+    setCategoryName(keyword);
+  };
+
   return (
     <div className="container">
-      <h1 className="main-title">UCBL Data Reader</h1>
+      <h1 className="main-title">Business Operation Process Manual (BOPM)</h1>
       <div className="main-layout">
         <div className="sidebar">
-          <h2>Categories</h2>
+          <h2>Table of Contents</h2>
+          <div className="search-bar">
+            <input
+              type="text"
+              value={categoryName}
+              onChange={filterCategoryTitle}
+              placeholder="Search..."
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+              className="search-icon"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+          </div>
+
           <ul>
             {categories &&
               categories.map((categorie) => {

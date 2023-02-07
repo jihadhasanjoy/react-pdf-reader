@@ -39,7 +39,7 @@ export default function Modal({
       {
         <div id="modal" onClick={() => addAttribute()} className="modal">
           <button onClick={modalClose} className="modal-close">
-            <svg
+            {/* <svg
               className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
@@ -51,7 +51,8 @@ export default function Modal({
                 strokeWidth={2}
                 d="M6 18L18 6M6 6l12 12"
               />
-            </svg>
+            </svg> */}
+            Back
           </button>
           <div className="modal-content">
             <PDFViewer url={url} />

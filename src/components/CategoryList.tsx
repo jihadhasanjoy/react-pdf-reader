@@ -23,7 +23,7 @@ export default function CategoryList({ lists, categoryName }: ICategoryList) {
             <p>Please select category</p>
           </div>
         ) : (
-          <p className="selected-items-title">Data of selected category</p>
+          <p className="selected-items-title">Categories</p>
         )}
 
         <ul id="categories" className="category-list">

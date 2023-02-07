@@ -9,6 +9,7 @@ html {
 body {
   background-color: #f7f7f7;
   color: #392b2b;
+  height: 100%;
 }
 
 .container {
@@ -28,6 +29,7 @@ body {
   padding: 15px 0;
   // border-bottom: 1px solid #76ba9967;
   box-shadow: 0px 2px 5px -4px rgba(118, 186, 153, 45%);
+  display: none;
 }
 
 .selected-items-title {
@@ -61,13 +63,36 @@ body {
   }
 }
 
+.search-bar {
+  position: relative;
+
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    box-shadow: 0px 2px 5px -4px rgba(118, 186, 153, 45%);
+  }
+  .search-icon {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    color: #76ba99;
+  }
+}
+
 .main-layout {
   display: flex;
 
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 400;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
+    color: #76ba99;
   }
 
   .main {
@@ -76,11 +101,11 @@ body {
   }
   .sidebar {
     max-width: 250px;
-    min-height: calc(100vh - 67px);
+    // min-height: calc(100vh - 67px);
     width: 100%;
     height: 100%;
     // border-right: 1px solid #76ba99;
-    box-shadow: 0px 4px 7px -2px #76ba99;
+    box-shadow: 7px 0px 9px -8px #76ba994f;
 
     li,
     h2 {
@@ -193,11 +218,11 @@ body {
 
 .modal-close {
   position: fixed;
-  right: 2rem;
-  top: 4rem;
+  right: 3rem;
+  top: 6rem;
   background-color: #76ba99;
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   z-index: 10;
   cursor: pointer;
@@ -205,6 +230,12 @@ body {
   padding: 3px;
   border: 0;
   min-width: auto !important;
+
+  &:hover {
+    background-color: #76ba99;
+    color: #fff;
+    opacity: 0.9;
+  }
 }
 
 .modal-content {
