@@ -63,41 +63,62 @@ body {
   }
 }
 
-.search-bar {
+.app {
   position: relative;
-
-  padding: 1rem;
-  margin-bottom: 1rem;
+}
+.search-bar {
+  position: absolute;
+  max-width: 30rem;
+  width: 100%;
+  margin-left: auto;
+  top: 10px;
+  right: 15px;
+  box-shadow: -2px 1px 9px 1px #76ba9921;
+  border-radius: 5px;
 
   input {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     border: 0;
     outline: 0;
-    box-shadow: 0px 2px 5px -4px rgba(118, 186, 153, 45%);
+    // box-shadow: -2px 7px 14px -7px #76ba9966;
+    border-radius: 5px;
   }
   .search-icon {
     position: absolute;
-    right: 25px;
-    top: 25px;
+    right: 12px;
+    top: 12px;
     color: #76ba99;
+    width: 20px;
+  }
+}
+.top-wrapper {
+  display: flex;
+  padding: 1.3rem 0;
+  position: relative;
+  // justify-content: center;
+  // box-shadow: 0px 2px 5px -4px rgba(118, 186, 153, 45%);
+  box-shadow: 0 4px 8px -8px #0000006b;
+  // box-shadow: 0 6px 4px -4px black;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #76ba99;
+    // text-align: center;
+    padding-left: 1rem;
+    width: 100%;
   }
 }
 
 .main-layout {
   display: flex;
 
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    // margin-bottom: 1rem;
-    color: #76ba99;
-  }
-
   .main {
     width: 100%;
     padding: 1rem;
+    padding-top: 2rem;
   }
   .sidebar {
     max-width: 250px;
@@ -220,20 +241,20 @@ body {
   position: fixed;
   right: 3rem;
   top: 6rem;
-  background-color: #76ba99;
+  background-color: transparent;
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
   z-index: 10;
   cursor: pointer;
-  color: #fff;
+  color: #187347;
   padding: 3px;
-  border: 0;
+  border: 2px solid #187347;
   min-width: auto !important;
 
   &:hover {
-    background-color: #76ba99;
-    color: #fff;
+    background-color: transparent;
+    color: #187347;
     opacity: 0.9;
   }
 }
