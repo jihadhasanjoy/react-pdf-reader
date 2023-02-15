@@ -48,11 +48,13 @@ body {
       content: "";
       position: absolute;
       left: -2rem;
-      top: 13px;
       width: 15px;
       height: 15px;
       background-color: #187347;
       border-radius: 50%;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
     }
 
     a {

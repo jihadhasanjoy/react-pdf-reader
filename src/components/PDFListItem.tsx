@@ -20,7 +20,7 @@ export default function PDFListItem({ data }: IProps) {
         title="Click to details"
       >
         <div>
-          <h6> {data.Title.slice(0, 130)}... </h6>
+          <h6> {data.Title} </h6>
         </div>
       </div>
       {showModal ? (
