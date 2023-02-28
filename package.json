@@ -7,6 +7,7 @@
     "build": "webpack --env production --mode production",
     "start": "webpack-dev-server --open --history-api-fallback --env development --mode development",
     "build-ucb": "webpack --env ucb --mode production",
+    "build-ucbprod": "webpack --env ucbprod --mode production",
     "build-sharepoint": "webpack --env sharepoint --mode production",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
