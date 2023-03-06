@@ -9,7 +9,7 @@ const headers = {
 const appAPIService = {
   getData: async (): Promise<IMainData[]> => {
     try {
-      const url = ucbFilePath + "items";
+      const url = ucbFilePath + "items?$top=2000";
       const response = await fetch(url, {
         headers,
       });
